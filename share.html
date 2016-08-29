@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<button id="shareBtn">shareBtn</button>
+<script>
+    window.fbAsyncInit = function () {
+        console.log('ASD');
+        FB.init({
+            appId: '849074938485019',
+            xfbml: true,
+            version: 'v2.2'
+        });
+
+        document.getElementById('shareBtn').onclick = function () {
+            FB.ui({
+                method: 'feed',
+                link: 'https://yash.sg.umbrella-web.com/market/demo/item/227',
+                name:'name link',
+                caption: 'An example caption',
+                picture:'https://s3.amazonaws.com/umbrella-web.bounce/stage-v3/items/zf945jgb8v706bt95f6f5w96cxamj9k9.jpg',
+                description:'description44444'
+            }, function(response){});
+        }
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+</body>
+</html>
