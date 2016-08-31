@@ -1,9 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
+<style>
+.social-share__item .fa {
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+.social-share__item .fa-facebook {
+  color: #3c5dae;
+}
+
+.social-share__item .fa-twitter {
+  color: #1aa4e7;
+}
+
+.social-share__item .fa-twitter {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+}
+
+.social-share__item .fa-twitter > * {
+  opacity: 0;
+  position: absolute !important;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>
 </head>
 <body>
+<!-- <ul class="social-share">
+                  <li class="social-share__item">
+                    <facebook-share name="oItem.name"
+                                    image="oItem.itemPictures[0].src"
+                                    description="oItem.short_descr"></facebook-share>
+                  </li>
+                  <li class="social-share__item">
+                    <twitter-share company="$root.yash.oCurrentMarket.company" name="oItem.name"></twitter-share>
+                  </li>
+                </ul> -->
+
 <button id="shareBtn">shareBtn</button>
 <script>
     window.fbAsyncInit = function () {
@@ -36,6 +77,83 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+    // angular directives
+//     dtvsMacros.directive('facebookShare', ['$location', 'FACEBOOK', function ($location, FACEBOOK) {
+//     return {
+//         restrict: "E",
+//         replace: true,
+//         template: '<a class="fa fa-facebook"></a>',
+//         scope: {
+//             name: '=',
+//             image: '=',
+//             description: '=',
+//         },
+//         link: function (scope, element) {
+//             window.fbAsyncInit = function () {
+//                 FB.init({
+//                     appId: FACEBOOK.APP_ID,
+//                     xfbml: true,
+//                     version: 'v2.2'
+//                 });
+//                 angular.element(element)[0].onclick = function () {
+//                     FB.ui({
+//                         method: 'feed',
+//                         link: $location.absUrl(),
+//                         name: scope.name,
+//                         caption: $location.$$host,
+//                         picture: scope.image,
+//                         description: scope.description,
+//                         hashtag: '#BouncePayments',
+//                         mobile_iframe: true,
+//                     }, function (response) {
+//                     });
+//                 }
+//             };
+//         }
+//     }
+// }]);
+
+// dtvsMacros.directive('twitterShare', ['$location', function ($location) {
+//     return {
+//         restrict: "E",
+//         replace: true,
+//         template: '<a class="fa fa-twitter"></a>',
+//         scope: {
+//             company: '=',
+//             name: '=',
+//         },
+//         link: function (scope, element) {
+//             window.twttr = (function (d, s, id) {
+//                 var js, fjs = d.getElementsByTagName(s)[0],
+//                     t = window.twttr || {};
+//                 if (d.getElementById(id)) return t;
+//                 js = d.createElement(s);
+//                 js.id = id;
+//                 js.src = "https://platform.twitter.com/widgets.js";
+//                 fjs.parentNode.insertBefore(js, fjs);
+
+//                 t._e = [];
+//                 t.ready = function (f) {
+//                     t._e.push(f);
+//                 };
+//                 return t;
+//             }(document, "script", "twitter-wjs"));
+
+//             twttr.ready(function () {
+//                 twttr.widgets.createShareButton(
+//                     $location.absUrl(),
+//                     angular.element(element)[0], {
+//                         count: 'none',
+//                         text: scope.name + '/' + scope.company,
+//                         hashtags: 'BouncePayments'
+//                     }).then(function (el) {
+//                 });
+//             });
+//         }
+//     }
+// }]);
 </script>
 </body>
 </html>
